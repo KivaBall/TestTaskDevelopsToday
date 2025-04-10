@@ -1,0 +1,5 @@
+﻿**Describe in a few sentences what you would change if you knew it would be used for a 10GB CSV input file**
+
+In my implementation I used CsvHelper to read the CSV file. But if we are talking about handling something kinda 10GB file, I would probably look into some .NET library that is better suited for working with huge datasets – maybe even something that streams data 'line-by-line' instead of loading everything into memory
+
+As for pushing the data into the database – I think it makes sense to parallelize parts of the process. From what I know, it’s totally possible in .NET to have a stream that writes data to DB on the fly. So while we are reading the data and maybe storing it in some kinda concurrent list or buffer, we could already be pushing it to the database in parallel. That should help speed things up quite a bit
